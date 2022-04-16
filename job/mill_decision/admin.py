@@ -3,7 +3,7 @@ from .models import Posting, Client, Message
 
 
 class PostingAdmin(admin.ModelAdmin):
-    list_display = ('pk', 'start', 'end', 'text', 'client_filter',)
+    list_display = ('pk', 'start', 'duration', 'text', 'client_filter', 'finish')
     search_fields = ('start', 'end',)
     list_filter = ('client_filter',)
     empty_value_display = '-пусто-'

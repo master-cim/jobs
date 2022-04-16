@@ -1,15 +1,20 @@
 from django.db import models
 from django.core.validators import MaxValueValidator, MinValueValidator
 
+import datetime
 import pytz
 
 
 class Posting(models.Model):
-    start = models.DateTimeField()
-    end = models.DateTimeField()
+    start = models.DateTimeField(auto_now_add=True)
+    duration = models.DurationField(default=datetime.timedelta(days=7))
     text = models.TextField()
     client_filter = models.CharField(max_length=50)
 
+    @property
+    def finish(self):
+        return self.start + self.duration
+    
     def __str__(self):
         return self.client_filter
 
