@@ -1,14 +1,13 @@
 from rest_framework import serializers
 from mill_decision.models import Posting, Client, Message
-from rest_framework.validators import UniqueTogetherValidator
 
 
 class MessageSerializer(serializers.ModelSerializer):
-    id_client = serializers.SlugRelatedField(
+    client = serializers.SlugRelatedField(
         read_only=True,
         slug_field='id'
     )
-    id_posting = serializers.SlugRelatedField(
+    posting = serializers.SlugRelatedField(
         read_only=True,
         slug_field='id')
 
