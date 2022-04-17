@@ -35,7 +35,8 @@ class PostingViewSet(viewsets.ModelViewSet):
 
 
 class MessageViewSet(viewsets.ModelViewSet):
-    """Отбираем только нужные комментарии к посту"""
+    """ Рассылки могут создавать и редактировать
+    только авторизованные пользователи"""
     serializer_class = MessageSerializer
     permission_classes = (IsAuthenticated,)
 

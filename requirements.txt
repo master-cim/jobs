@@ -11,3 +11,4 @@ django-filter==2.4.0
 sorl-thumbnail==12.7.0
 djoser
 markdown
+drf-yasg
