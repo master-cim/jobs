@@ -12,3 +12,7 @@ sorl-thumbnail==12.7.0
 djoser
 markdown
 drf-yasg
+python-dotenv==0.19.0
+python-telegram-bot==13.7
+pyrogram
+python-telegram-bot
