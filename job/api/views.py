@@ -2,9 +2,9 @@ from rest_framework import viewsets
 from rest_framework.decorators import action
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
-from rest_framework.permissions import IsAuthenticatedOrReadOnly
 from django.shortcuts import get_object_or_404
 from rest_framework.pagination import LimitOffsetPagination
+from rest_framework import generics
 
 
 from mill_decision.models import Posting, Client, Message
@@ -31,7 +31,18 @@ class PostingViewSet(viewsets.ModelViewSet):
     pagination_class = LimitOffsetPagination
     ordering_fields = '__all__'
     ordering = ('pub_date',)
-    
+
+
+# class PostingList(generics.ListCreateAPIView):
+#     queryset = Posting.objects.all()
+#     serializer_class = PostingSerializer
+#     permission_classes = (IsAuthenticated,)
+
+
+# class PostingDetail(generics.RetrieveUpdateDestroyAPIView):
+#     queryset = Posting.objects.all()
+#     serializer_class = PostingSerializer
+#     permission_classes = (IsAuthenticated,)
 
 
 class MessageViewSet(viewsets.ModelViewSet):
