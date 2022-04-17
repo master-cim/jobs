@@ -9,3 +9,5 @@ PyJWT==2.1.0
 requests==2.26.0
 django-filter==2.4.0
 sorl-thumbnail==12.7.0
+djoser
+markdown

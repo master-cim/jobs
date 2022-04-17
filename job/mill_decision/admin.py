@@ -18,8 +18,8 @@ class ClientAdmin(admin.ModelAdmin):
 
 class MessageAdmin(admin.ModelAdmin):
     list_display = ('pk', 'pub_date', 'sending_status',
-                    'id_posting', 'id_client',)
-    list_editable = ('id_posting', 'id_client',)
+                    'posting', 'client',)
+    list_editable = ('posting', 'client',)
     search_fields = ('pub_date',)
     list_filter = ('pub_date', 'sending_status',)
     

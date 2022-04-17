@@ -16,10 +16,10 @@ class Posting(models.Model):
         return self.start + self.duration
     
     def __str__(self):
-        return self.client_filter
+        return self.text
 
 
-class Client(models.Model):    
+class Client(models.Model):
     phone = models.PositiveIntegerField(
         validators=[MinValueValidator(70000000000),
                     MaxValueValidator(79999999999)])
@@ -29,15 +29,26 @@ class Client(models.Model):
     timezone = models.CharField(max_length=32, choices=TIMEZONES,
                                 default='Europe/Moscow')
 
+    def __str__(self):
+        return f'{self.phone}'
+
 
 class Message(models.Model):
     pub_date = models.DateTimeField(auto_now_add=True)
     sending_status = models.CharField(max_length=250)
-    id_posting = models.ForeignKey(
-        Posting,
-        on_delete=models.CASCADE
-    )
-    id_client = models.ForeignKey(
+    client = models.ForeignKey(
         Client,
-        on_delete=models.CASCADE
+        null=False,
+        on_delete=models.CASCADE,
+        related_name='message'
     )
+    posting = models.ForeignKey(
+        Posting,
+        null=False,
+        on_delete=models.CASCADE,
+        related_name='message'
+    )
+
+    def __str__(self):
+        return(f'{self.pub_date} {self.client}'
+               f'{self.posting} {self.sending_status}')
